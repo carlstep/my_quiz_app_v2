@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_quiz_app_v2/questions_screen.dart';
 import 'package:my_quiz_app_v2/start_screen.dart';
 
 class Quiz extends StatefulWidget {
@@ -11,6 +12,18 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+// RENDERING CONTENT CONDITIONALLY...
+// use Widget type instead of var.  Widget type is more
+// general, while var is more specific with dart type inference.
+  Widget activeScreen = const StartScreen();
+
+// method for switching screens
+  void switchScreen() {
+    setState(() {
+      activeScreen = const QuestionsScreen();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,7 +39,7 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: const StartScreen(),
+          child: activeScreen,
         ),
       ),
     );
