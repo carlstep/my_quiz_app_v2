@@ -15,7 +15,15 @@ class _QuizState extends State<Quiz> {
 // RENDERING CONTENT CONDITIONALLY...
 // use Widget type instead of var.  Widget type is more
 // general, while var is more specific with dart type inference.
-  Widget activeScreen = const StartScreen();
+// StartScreen needs access to the switchScreen function in quiz.dart
+  Widget? activeScreen;
+
+// initState is a method. executes once, and before the build method
+  @override
+  void initState() {
+    activeScreen = StartScreen(switchScreen);
+    super.initState();
+  }
 
 // method for switching screens
   void switchScreen() {
