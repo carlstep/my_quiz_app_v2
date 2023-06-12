@@ -16,35 +16,32 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            currentQuestion.questionText,
-            style: const TextStyle(
-              color: Colors.white70,
+      child: Container(
+        padding: const EdgeInsets.all(40.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              currentQuestion.questionText,
+              style: const TextStyle(
+                color: Colors.white70,
+              ),
+              textAlign: TextAlign.center,
             ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[0],
-            onTapAnswer: () {},
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[1],
-            onTapAnswer: () {},
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[2],
-            onTapAnswer: () {},
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[3],
-            onTapAnswer: () {},
-          ),
-        ],
+            const SizedBox(
+              height: 30,
+            ),
+            // the three dots ... is a spread operator
+            // provides the answers using map, for each answer return the AnswerButton
+            ...currentQuestion.answers.map((answer) {
+              return AnswerButton(
+                answerText: answer,
+                onTapAnswer: () {},
+              );
+            }),
+          ],
+        ),
       ),
     );
   }
