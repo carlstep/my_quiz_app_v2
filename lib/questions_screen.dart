@@ -34,7 +34,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             ),
             // the three dots ... is a spread operator
             // provides the answers using map, for each answer return the AnswerButton
-            ...currentQuestion.answers.map((answer) {
+            // getShuffledAnswers() is the method to create a copy of answers and shuffle
+            ...currentQuestion.getShuffledAnswers().map((answer) {
               return AnswerButton(
                 answerText: answer,
                 onTapAnswer: () {},
