@@ -16,6 +16,8 @@ class ResultsScreen extends StatelessWidget {
   final List<String> chosenAnswers;
 
 // get the data from questions and answers
+// an alternative would be to create a getter method -
+// getter method - change getSummaryData() >> 'get summaryData'
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
 

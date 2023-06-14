@@ -27,15 +27,15 @@ class _QuizState extends State<Quiz> {
 // method to forward selectedAnswers to QuestionsScreen
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
-
+// if # of answers is equal to # of questions, go to results-screen
     if (selectedAnswers.length == questions.length) {
       setState(() {
         activeScreen = 'results-screen';
-        // selectedAnswers = [];
       });
     }
   }
 
+// restarts the quiz, resets the # of selected answers to empty list
   void restartQuiz() {
     setState(() {
       selectedAnswers = [];
